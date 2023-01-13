@@ -1,10 +1,13 @@
-Map<int, String> chapterChoice = {
+Map<int, String> chapterChoiceActiveIngredients = {
+  0: 'VNS Parasympathikus',
+  1: 'VNS Sympathikus',
+  2: 'Blutgefäße',
+  3: 'Test',
+};
+
+Map<int, String> chapterChoiceMechanisms = {
   0: 'Wirkmechanismen VNS',
-  1: 'VNS Parasympathikus',
-  2: 'VNS Sympathikus',
-  3: 'Blutgefäße',
-  4: 'Wirkmechanismen Blutgefäße',
-  5: 'Test',
+  1: 'Wirkmechanismen Blutgefäße',
 };
 
 Map<String, String> getMap(String nameOfMap) {

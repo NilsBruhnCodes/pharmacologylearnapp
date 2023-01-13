@@ -1,0 +1,1 @@
+enum Topics { activeIngredient, mechanisms }
