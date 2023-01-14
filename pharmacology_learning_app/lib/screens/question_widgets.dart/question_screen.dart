@@ -1,8 +1,10 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:pharmacology_learning_app/screens/question_widgets.dart/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/checks.dart';
 import '../../models/clicked_right_first_time.dart';
@@ -20,6 +22,7 @@ class QuestionScreen extends StatelessWidget {
   late List keyStrings;
   late List valueStrings;
   late int questionNumber;
+  String? memoryHook;
   bool clickedRightTheFirstTime = true;
 
   int chooseTheRightBox = Random().nextInt(3);
@@ -97,27 +100,83 @@ class QuestionScreen extends StatelessWidget {
     }
   }
 
+  Future<String> getMemoryHookText() async {
+    final prefs = await SharedPreferences.getInstance();
+    String? memoryHook =
+        prefs.getString('${keyStrings[questionNumber]}memoryHook');
+    return memoryHook!;
+  }
+
+  void openDialog(BuildContext context) => showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: const Text('Eselsbrücke'),
+            content: Column(
+              children: [
+                FutureBuilder<String?>(
+                  future: getMemoryHookText(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return Text(snapshot.data!);
+                    } else {
+                      return const Text(
+                          'Hier kannst du deine eigene Eselsbrücken hinzufügen. Die kannst du dir sowieso am besten merken!');
+                    }
+                  },
+                ),
+                Card(
+                  color: Colors.transparent,
+                  elevation: 0.0,
+                  child: Column(
+                    children: <Widget>[
+                      CupertinoTextField(
+                        onChanged: (value) {
+                          memoryHook = value;
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            actions: [
+              CupertinoDialogAction(
+                child: const Text('Schließen'),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              CupertinoDialogAction(
+                child: const Text('Speichern'),
+                onPressed: () async {
+                  final prefs = await SharedPreferences.getInstance();
+                  prefs.setString(
+                      '${keyStrings[questionNumber]}memoryHook', memoryHook!);
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+
   @override
   Widget build(BuildContext context) {
     clickedRightFirstTime = true;
     WidgetsBinding.instance
         .addPostFrameCallback((_) => checkForLeftQuestion(context));
     return Scaffold(
-        body: Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/images/background.png'),
-            fit: BoxFit.cover),
-      ),
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Center(
-              child: GestureDetector(
-                onTap: () {
-                  Phoenix.rebirth(context);
-                },
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/background.png'),
+              fit: BoxFit.cover),
+        ),
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Center(
                 child: Container(
                   padding: const EdgeInsets.all(20),
                   decoration: const BoxDecoration(
@@ -129,6 +188,27 @@ class QuestionScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              child: const Text(
+                                '╳',
+                                style: TextStyle(
+                                    fontSize: 25, color: Colors.white),
+                              ),
+                              onTap: () => Phoenix.rebirth(context),
+                            ),
+                            GestureDetector(
+                              child: const Text(
+                                '💡',
+                                style: TextStyle(fontSize: 30),
+                              ),
+                              onTap: () => openDialog(context),
+                            ),
+                          ],
+                        ),
                         Text(
                           keyStrings[questionNumber],
                           style: const TextStyle(
@@ -139,22 +219,22 @@ class QuestionScreen extends StatelessWidget {
                           'Noch ${selectedQuestionFromChapter.length} Fragen übrig',
                           style: const TextStyle(
                               fontSize: 15, color: Colors.white),
-                        )
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 40),
-            SizedBox(
-              height: MediaQuery.of(context).size.height - 280,
-              width: MediaQuery.of(context).size.width,
-              child: Column(children: createElectionButtons(context)),
-            ),
-          ],
+              const SizedBox(height: 40),
+              SizedBox(
+                height: MediaQuery.of(context).size.height - 280,
+                width: MediaQuery.of(context).size.width,
+                child: Column(children: createElectionButtons(context)),
+              ),
+            ],
+          ),
         ),
       ),
-    ));
+    );
   }
 }
