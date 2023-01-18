@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:pharmacology_learning_app/models/clicked_right_first_time.dart';
+import 'package:pharmacology_learning_app/screens/question_widgets.dart/detail_solution_screen.dart';
 import 'package:pharmacology_learning_app/screens/question_widgets.dart/question_screen.dart';
+
+import '../../models/clicked_right_first_time.dart';
 
 class ElectionButton extends StatefulWidget {
   const ElectionButton({
@@ -11,6 +13,7 @@ class ElectionButton extends StatefulWidget {
     required this.selectedQuestionFromChapter,
     required this.keyStrings,
     required this.questionNumber,
+    required this.listLocation,
     Key? key,
   }) : super(key: key);
 
@@ -18,6 +21,7 @@ class ElectionButton extends StatefulWidget {
   final bool rightAnswer;
   final List keyStrings;
   final int questionNumber;
+  final int listLocation;
 
   final Map<String, String> selectedQuestionFromChapter;
 
@@ -26,8 +30,9 @@ class ElectionButton extends StatefulWidget {
 }
 
 class _ElectionButtonState extends State<ElectionButton> {
-  Color color = const Color.fromARGB(240, 149, 61, 50);
+  Color color = const Color.fromARGB(207, 121, 50, 41);
   bool rightOnTapFunctionWasCalled = false;
+  bool pressedWrongButton = false;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +53,6 @@ class _ElectionButtonState extends State<ElectionButton> {
         }
       },
       onTap: () {
-        late bool pressedWrongButton;
         if (widget.rightAnswer) {
           pressedWrongButton = false;
           rightOnTapFunctionWasCalled = true;
@@ -66,9 +70,22 @@ class _ElectionButtonState extends State<ElectionButton> {
               : const Color.fromARGB(239, 58, 228, 20);
         });
       },
+      onLongPress: () {
+        if (!widget.rightAnswer && pressedWrongButton) {
+          Navigator.push(
+            context,
+            CupertinoPageRoute(
+              builder: (context) => DetailSolutionScreen(
+                selectedQuestionFromChapter: widget.selectedQuestionFromChapter,
+                listLocation: widget.listLocation,
+              ),
+            ),
+          );
+        }
+      },
       child: Container(
         padding: const EdgeInsets.all(10),
-        margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
         height: double.infinity,
         width: double.infinity,
         decoration: BoxDecoration(

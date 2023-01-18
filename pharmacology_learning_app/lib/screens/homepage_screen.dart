@@ -22,7 +22,7 @@ class HomepageScreen extends StatelessWidget {
               'die Pharma Lern-App',
               style: TextStyle(fontSize: 25),
             )),
-            const SizedBox(height: 30),
+            const SizedBox(height: 85),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height - 330,

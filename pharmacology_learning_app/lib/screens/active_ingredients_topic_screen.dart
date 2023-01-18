@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:pharmacology_learning_app/models/content.dart';
 import 'package:pharmacology_learning_app/models/checks.dart';
 import 'package:pharmacology_learning_app/models/question_lists_handling.dart';
 import 'package:pharmacology_learning_app/models/topics.dart';
 import 'package:pharmacology_learning_app/screens/question_widgets.dart/question_screen.dart';
+import 'package:pharmacology_learning_app/screens/solutions_screen.dart';
 
 class ActiveIngredientsTopicScreen extends StatefulWidget {
   ActiveIngredientsTopicScreen({super.key});
@@ -36,70 +38,88 @@ class _ActiveIngredientsTopicScreenState
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height - 330,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: ListView.builder(
-                  itemCount: chapterChoiceActiveIngredients.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                      margin: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-                        border: Border.all(
-                          color: const Color(0xffEC5641),
-                          width: 2,
-                        ),
-                        color: (widget._selectedItems.contains(index))
-                            ? const Color(0xffEC5641).withOpacity(0.3)
-                            : Colors.transparent,
+              child: ListView.builder(
+                itemCount: chapterChoiceActiveIngredients.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    margin: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      border: Border.all(
+                        color: const Color(0xffEC5641),
+                        width: 2,
                       ),
-                      child: Column(
-                        children: [
-                          ListTile(
-                            onLongPress: () {
-                              if (widget._selectedItems.contains(index)) {
-                                setState(() {
-                                  widget._selectedItems
-                                      .removeWhere((val) => val == index);
-                                });
-                              }
-                            },
-                            onTap: () {
-                              if (!widget._selectedItems.contains(index)) {
-                                setState(() {
-                                  widget._selectedItems.add(index);
-                                });
-                              }
-                            },
-                            title: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Center(
-                                  child: Text(
-                                      chapterChoiceActiveIngredients[index]!),
+                      color: (widget._selectedItems.contains(index))
+                          ? const Color(0xffEC5641).withOpacity(0.3)
+                          : Colors.transparent,
+                    ),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          onLongPress: () {
+                            if (widget._selectedItems.contains(index)) {
+                              setState(() {
+                                widget._selectedItems
+                                    .removeWhere((val) => val == index);
+                              });
+                            }
+                          },
+                          onTap: () {
+                            if (!widget._selectedItems.contains(index)) {
+                              setState(() {
+                                widget._selectedItems.add(index);
+                              });
+                            }
+                          },
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  List<int> chapter = [index];
+                                  Navigator.push(
+                                    context,
+                                    CupertinoPageRoute(
+                                      builder: (context) => SolutionScreen(
+                                        selectedQuestionFromChapter:
+                                            createSelectedQuestionFromChapter(
+                                                chapter,
+                                                Topics.activeIngredient),
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: SvgPicture.asset(
+                                  'assets/svg/info.svg',
+                                  color: Colors.black,
+                                  width: 20,
                                 ),
-                                const SizedBox(width: 20),
-                                FutureBuilder<String?>(
-                                  future: getCheckString(
-                                      chapterChoiceActiveIngredients[index]!),
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData) {
-                                      return Text(snapshot.data!);
-                                      //TODO: snapshot.data! add that
-                                    } else {
-                                      return const Text('');
-                                    }
-                                  },
-                                )
-                              ],
-                            ),
+                              ),
+                              const SizedBox(width: 10),
+                              Center(
+                                child: Text(
+                                    chapterChoiceActiveIngredients[index]!),
+                              ),
+                              const SizedBox(width: 20),
+                              FutureBuilder<String?>(
+                                future: getCheckString(
+                                    chapterChoiceActiveIngredients[index]!),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    return Text(snapshot.data!);
+                                    //TODO: snapshot.data! add that
+                                  } else {
+                                    return const Text('');
+                                  }
+                                },
+                              )
+                            ],
                           ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
             GestureDetector(

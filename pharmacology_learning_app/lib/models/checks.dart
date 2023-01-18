@@ -29,6 +29,11 @@ Future<String> getCheckString(String chapter) async {
     String buffer1 = buffer.replaceAll("[", "");
     String buffer2 = buffer1.replaceAll("]", "");
 
+    if (buffer2.length / 2 > 3) {
+      // divide by two because one emoji has so characters
+      buffer2 = '✅ (${buffer2.length ~/ 2}x)';
+    }
+
     return buffer2;
   }
 }

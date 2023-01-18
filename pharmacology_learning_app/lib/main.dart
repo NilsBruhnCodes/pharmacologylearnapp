@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:pharmacology_learning_app/screens/active_ingredients_topic_screen.dart';
 import 'package:pharmacology_learning_app/screens/homepage_screen.dart';
 
 void main() {

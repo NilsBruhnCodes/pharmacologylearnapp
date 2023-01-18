@@ -32,12 +32,13 @@ class QuestionScreen extends StatelessWidget {
 
     for (var i = 0; i < 3; i++) {
       int random = Random().nextInt(selectedQuestionFromChapter.length);
-      if (selectedQuestionFromChapter.length > 4) {
+      if (selectedQuestionFromChapter.length > 3) {
         while (random == questionNumber || randomNumbers.contains(random)) {
           random = Random().nextInt(selectedQuestionFromChapter.length);
         }
         randomNumbers.add(random);
-      } else if (selectedQuestionFromChapter.length > 1) {
+      } else if (selectedQuestionFromChapter.length > 1 &&
+          selectedQuestionFromChapter.length < 4) {
         while (random == questionNumber) {
           random = Random().nextInt(selectedQuestionFromChapter.length);
         }
@@ -67,6 +68,7 @@ class QuestionScreen extends StatelessWidget {
         widgetList.add(
           Expanded(
             child: ElectionButton(
+              listLocation: 0,
               questionNumber: questionNumber,
               keyStrings: keyStrings,
               answer: valueStrings[questionNumber],
@@ -79,6 +81,7 @@ class QuestionScreen extends StatelessWidget {
         widgetList.add(
           Expanded(
             child: ElectionButton(
+              listLocation: randomNumbers[listIterator],
               questionNumber: questionNumber,
               keyStrings: keyStrings,
               answer: valueStrings[randomNumbers[listIterator]],
@@ -131,7 +134,11 @@ class QuestionScreen extends StatelessWidget {
                   elevation: 0.0,
                   child: Column(
                     children: <Widget>[
+                      const SizedBox(height: 20),
                       CupertinoTextField(
+                        placeholder: 'Tippe hier deine Eselsbrücke ein...',
+                        minLines: 6,
+                        maxLines: 6,
                         onChanged: (value) {
                           memoryHook = value;
                         },
@@ -225,9 +232,9 @@ class QuestionScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
               SizedBox(
-                height: MediaQuery.of(context).size.height - 280,
+                height: MediaQuery.of(context).size.height - 260,
                 width: MediaQuery.of(context).size.width,
                 child: Column(children: createElectionButtons(context)),
               ),
