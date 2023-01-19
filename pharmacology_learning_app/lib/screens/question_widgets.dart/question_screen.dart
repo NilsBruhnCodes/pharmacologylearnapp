@@ -7,11 +7,12 @@ import 'package:pharmacology_learning_app/screens/question_widgets.dart/widgets.
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../models/checks.dart';
-import '../../models/clicked_right_first_time.dart';
+import '../../models/bools.dart';
 
 class QuestionScreen extends StatelessWidget {
   QuestionScreen({
     required this.selectedQuestionFromChapter,
+    required this.startedSession,
     Key? key,
   })  : keyStrings = selectedQuestionFromChapter.keys.toList(),
         valueStrings = selectedQuestionFromChapter.values.toList(),
@@ -22,6 +23,7 @@ class QuestionScreen extends StatelessWidget {
   late List keyStrings;
   late List valueStrings;
   late int questionNumber;
+  late bool startedSession;
   String? memoryHook;
   bool clickedRightTheFirstTime = true;
 
@@ -68,6 +70,7 @@ class QuestionScreen extends StatelessWidget {
         widgetList.add(
           Expanded(
             child: ElectionButton(
+              startedSession: startedSession,
               listLocation: 0,
               questionNumber: questionNumber,
               keyStrings: keyStrings,
@@ -81,6 +84,7 @@ class QuestionScreen extends StatelessWidget {
         widgetList.add(
           Expanded(
             child: ElectionButton(
+              startedSession: startedSession,
               listLocation: randomNumbers[listIterator],
               questionNumber: questionNumber,
               keyStrings: keyStrings,
@@ -99,7 +103,7 @@ class QuestionScreen extends StatelessWidget {
 
   checkForLeftQuestion(BuildContext context) async {
     if (selectedQuestionFromChapter.length == 1) {
-      await addCheckToListToPreferences();
+      await addCheckToListToPreferences(startedSession);
     }
   }
 

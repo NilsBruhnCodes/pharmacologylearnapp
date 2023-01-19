@@ -5,7 +5,9 @@ Map<int, String> chapterChoiceActiveIngredients = {
   3: 'Diuretika',
   4: 'Asthma',
   5: 'Analgetika',
-  6: 'Test',
+  6: 'Hypnotica & Anxiolytika',
+  7: 'Schilddrüse',
+  8: 'Test',
 };
 
 Map<int, String> chapterChoiceMechanisms = {
@@ -34,6 +36,10 @@ Map<String, String> getMap(String nameOfMap) {
       return asthmaWirkstoffe;
     case 'Analgetika':
       return analgetikaWirkstoffe;
+    case 'Hypnotica & Anxiolytika':
+      return anxiolytikaHypnoticaWirkstoffe;
+    case 'Schilddrüse':
+      return schilddruesenWirkstoffe;
     case 'Test':
       return test;
   }
@@ -85,7 +91,7 @@ Map<String, String> vnsParasymWirkstoffe = {
   'Curare/Tubocurarin?':
       'nicht depolarisierendes Muskelrelaxans\n→ wird nicht mehr eingesetzt heute, da schlecht steuerbar',
   'Vecuronium?':
-      'nicht depolarisierendes Muskelrelaxans\n→ Anwendung bei Muskelrelaxation (zur Intubation und OP Eingriffen)\n→ kurze Wirksauer, renal und biliär eliminiert\n→ keine Ganglienblockade',
+      'nicht depolarisierendes Muskelrelaxans\n→ Anwendung bei Muskelrelaxation (zur Intubation und OP Eingriffen)\n→ kurze Wirkdauer, renal und biliär eliminiert\n→ keine Ganglienblockade',
   'Rocuronium?':
       'nicht depolarisierendes Muskelrelaxans\n→ Wirkungseintritt deutlich schneller als bei Vecuronium\n→ Elimination größtenteils biliär\n→ Anwendung bei Muskelrelaxation (zur Intubation und OP Eingriffen)',
   'Atracurium?':
@@ -172,7 +178,7 @@ Map<String, String> blutgefaesseWirkstoffe = {
   'Bosentan?':
       'Endothelinrezeptor Antagonisten\n→ Hemmung der Vasokonstriktion\n→ Anwendung bei pulmonaler arterieller Hypertonie und Niereninsuffizienz\n→ hepatotoxisch',
   'Ambrisentan?':
-      'Endothelinrezeptor Antagonisten\n→ Hemmung der Vasokonstriktion\n→ Anwendung bei pulmonaler arterieller Hypertonie und Niereninsuffizienz\n→ Ödeme und keine Anwendung bei Schwangerschaft',
+      'Endothelinrezeptor Antagonisten\n→ Hemmung der Vasokonstriktion\n→ Anwendung bei pulmonaler arterieller Hypertonie und Niereninsuffizienz\n→ Ödeme als Nebenwirkung \n→keine Anwendung bei Schwangerschaft',
   'Diphenhydramin/Dimenhydrinat?':
       'Histamin Rezeptor Blocker der 1. Generation\n→ Anwendung als Sedativa, Antiemetika',
   'Cetirizin/Loratadin/Fexofenadin?':
@@ -214,9 +220,120 @@ Map<String, String> blutgefaesseWirkstoffe = {
   'Ivabradin?':
       'Blockade der HCN Kanäle\n→ negativ chronotroper Effekt ohne negative Inotropie\n→ Anwendung bei Herzinsuffizienz und Ruhefrequenz über 75/min, Angina pectoris und koronarer Herzerkrankung',
   'Vernakalant?':
-      'Vorhof selekties Antiarrhytmikum\n→ Verlängerung des Vorhof Potentials\n→ Anwendung bei Vorhofflimmern',
+      'Vorhof selektives Antiarrhytmikum\n→ Verlängerung des Vorhof Potentials\n→ Anwendung bei Vorhofflimmern',
   'ASS?':
       'Hemmung der Thrombozytenaggregation durch Hemmung der Cyclooxygenase und damit Thromboxan\n→ Anwendung für Herzinfarkt, Schlaganfall Prophylaxe und sonstigen Schmerzen/Fieber',
+};
+
+Map<String, String> schilddruesenWirkstoffe = {
+  'Levothyroxin?':
+      'T4 Substitut \nAnwendung: \n→Schilddrüsenhormonsubstitution bei  Hypothyreose, Prophylaxe einer Rezidivstruma nach Resektion einer Struma mit euthyreoter Funktionslage, benigne Struma mit euthyreoter Funktionslage, Suppressions- und Substitutionstherapie bei Schilddrüsenmalignom \nWirkung: \n→ wie das T4 Körperhormon \nBesonderheiten: \n→ Medikament muss 30 min vor dem Frühstück eingenommen werden \nKontraindikationen: \n→ frischer Myokardinfarkt, tachykarde Rhythmusstörung (bei Pat mit KHK muss Medikament eingeschlichen werden, aufgrund des zunehmenden O2 Verbrauchs des Herzens) \nWechselwirkungen: \n→ orale Antikoagulantien, Antidiabetika, Elektrolyten, Antiarrhytmika (Amiodaron), iodhaltigen Kontrastmittel',
+  'Liothyronin?':
+      'T3 Substitut \nAnwendung: \n→ bei Konversionsstörungen \n→ für akute Behandlung, da kürzere HWZ und kürzere Wirkdauer \nWirkung: \n→ wie das T3 Körperhormon \n→ Medikament muss 30 min vor dem Frühstück eingenommen werden \nKontraindikationen: \n→ frischer Myokardinfarkt, tachykarde Rhythmusstörung (bei Pat mit KHK muss Medikament eingeschlichen werden, aufgrund des zunehmenden O2 Verbrauchs des Herzens) \nWechselwirkungen: \n→ orale Antikoagulantien, Antidiabetika, Elektrolyten, Antiarrhytmika (Amiodaron), iodhaltigen Kontrastmittel',
+  'Perchlorat?':
+      'Iodinationshemmstoff \nAnwendung: \n→ zusammen mit Thioharnstoff-Derivaten bei Gabe iodhaltiger Konstrastmittel, Therapie einer Hyperthyreose bei Thioharnstoff-Unverträglichkeiten, Thyreotoxische Krise \n→ mit ausreichend Wasser nach dem Essen einnehmen \nNebenwirkungen und Wechselwirkung: \n→ GIT Störungen, selten: Agranulozytose, aplastische Anämie, nephrotoxisches Syndrom \n→ mit iodhaltigen Substanzen \nKontaindikation: \n→ SS, M. Basedow, retrosternale Strumen',
+  'Thiouracile/Mercaptoimidazole/Thiamazol?':
+      'Iodisationhemmstoffe \nAnwendung: \n→ Hyperthyreose, M. Basedow, Schilddrüsenautonomie, Thyreotoxische Krise \nNebenwirkungen und Wechselwirkungen: \n→ allergische reaktionen, Hypothyreose, Agranulozytose (deswegen Blutbildkontrollen nach Therapiebeginn!) \nKontraindikationen und Besonderheiten: \n→ bei stark ausgeprägten Exophtalmus, bei retrosternalen Strumen \n→ Plazentagängig, deswegen so niedrig wie möglich dosieren bei SS',
+  '131 Iod?':
+      'Radioiod \nAnwendung: \n→ bei funktioneller Autonomie, Thioharnstoff Unverträglichkeit, Rezidiven des M. Basedow \nNebenwirkungen: \n→ Gastritis, Siladenitis \nKontraindikation: \n→ SS, Stillzeit, schwere Hyperthyreose',
+  'Calcitonin?':
+      'Körperhormon \nAnwendung: \n→ M. Paget, M. Sudeck, Hypercalciämie \nWirkungen: \n→ Regulation von Calcium und Phosphat Haushalt \n→ Calcitonin wird bei hohen Ca Level ausgeschüttet \n→ Phosphatsenkende Wirkung (Hemmung der Rückresorption aus der Niere) \n→ Calciumsenkende Wirkung (Hemmung der Calciumfreisetzung aus den Knochen und Hemmung der Osteoklasten Aktivität \n→ Gegenspieler zum Parathormon \nNebenwirkungen: \n→ Hautrötungen, Übelkeit, Erbrechen',
+};
+
+Map<String, String> diuretikaWirkstoffe = {
+  'Acetazolamid?':
+      'Carboanhydrasehemmer\n→ durch Hemmung der Carboanhydrase kommt es zum Bikarbonat/Na und K Verlust\n→ Anwendung bei Glaukom, Höhenkrankheit\n→ wirkt im proximalen Tubulus\n→ keine Anwendung bei Leber-Niereninsuffizienz',
+  'Furasomid/Torasomid?':
+      'Schleifendiuretikum\n→ Hemmung des Na/K/2Cl Kotransports im dünnen aufsteigenden Ast der Henle Schleife, wodurch es zur Na/K/Ca/Mg Ausscheidung kommt\n→ Anwendung bei Herzinsuffizienz, arterieller Hypertonie, Ödembehandlung, Niereninsuffzienz, Hyperkaliämie/ Hyperkalziämie\n→ ist ein high ceiling Diuretikum mit Rebound Effekt\n→ keine Anwendung bei Hypovolämie, Nierenversagen mit Anurie, Nierensteinen und Leberinsuffizienz',
+  'Hydrochlorothiazid?':
+      'reversible Hemmung der Na/Cl Kotransports im frühdistalen Tubulus\n→ Anwendung bei arterieller Hypertonie, Herzinsuffizienz, renale und hepatogene Ödeme und Hyperkalziurie\n→ Na/K/Mg/Cl Ausscheidung mit Ca Resorption\n→ low ceiling Diuretikum\n→ keine Anwendung bei Nierenversagen, Schwangerschaft und Gicht',
+  'Amilorid/Triamteren?':
+      'reversible Blockade des Aldosteron abhängigen ENaCs im spätdistalen Tubulus und Sammelrohr\n→ Na Ausscheidung mit K Retention\n→ Anwendung bei Hypokaliämie, Hypomagnesiämie, arterielle Hypertonie und Herzinsuffizienz (in Kombination mit Thiazid (Hypertonie) oder Schleifendiuretikum (Herz)\n→ keine Gabe bei Niereninsuffizienz, Hyperkaliämie, Hyponatriämie',
+  'Spironolacton/Kaliumcanrenoat/Eplerenon?':
+      'Aldosteron-Rezeptor-Antagonist\n→ Anwendung bei Ödemen, Herzinsuffizienz, Aszites\n→ antagonisiert den Aldosteronrezeptor am spätdistalen Tubulus und am Sammelrohr\n→ induziert eine Na Cl Ausscheidung\n→ nicht angewendet bei Niereninsuffizienz'
+};
+
+Map<String, String> asthmaWirkstoffe = {
+  'Salbutamol/Fenoterol/Terbutalin?':
+      'beta 2 Adrenozeptor Agonisten von SABA Gruppe\n→ wirken 4-6h\n→ Anwendung bei Asthma bronchiale\n→ relativ lipophob\n→ nach Bedarf\n→ weiten Bronchen durch beta 2 Agonisierung',
+  'Formoterol/Salmeterol?':
+      'beta 2 Adrenozeptor Agonist von LABA Gruppe\n→ wirken bis zu 12h\n→ Anwendung bei Asthma bronchiale\n→ verweilt in der Membran und wirkt dort lange\n→ weiten Bronchen durch beta 2 Agonisierung',
+  'Ipratropiumbromid?':
+      'Muskarin Antagonist von SAMA Gruppe\n→ wirken bis 6h\n→ Anwendung bei Asthma bronchiale\n→ können zu UAW wie Kopfschmerzen, Mundtrockenheit, GI Störungen und Infektionen der oberen Atemwege führen',
+  'Aclidiniumbromid/Glycopyrroniumbromid/Tiotropiumbromid?':
+      'Muskarin Antagonist von LAMA Gruppe\n→ wirken bis 12-24h\n→können zu UAW wie Kopfschmerzen, Mundtrockenheit, GI Störungen und Infektionen der oberen Atemwege führen\n→ Anwendung bei Asthma bronchiale',
+  'Montelukast/Zafirlukast':
+      'Leukotrienrezeptor Antagonist\n→ verhindern Bronchiokonstriktion/Gefäßdurchlässigkeit/Schleimsekretion\n→ Anwendung bei Asthma bronchiale\n→ antagonisieren am CysLT1 Rezeptor',
+  'Budenosid/Beclometasondipropionat?':
+      'Inhalative Glucocorticoide\n→ hemmen Zytokinsynthese\n→ Erhöhung der beta Rezeptoren\n→ hoher first pass Effekt, dadurch kaum Nebenwirkungen\n→ Anwendung bei Asthma bronchiale, COPD, Rhinitis, chronisch entzündliche Darmerkrankungen, Rhinitis',
+  'Omalizumab?':
+      'Anti IgE\n→ blockiert das IgE am Binden auf Mastzellen und Basophilen\n→ reduziert Aktivität und Expression von IgE Rezeptoren\n→ Anwendung bei Asthma bronchiale, Uticaria',
+  'Mepolizumab/Reslizumab/Benralizumab?':
+      'Anti IL5\n→ verhindert Bindung von IL5 auf Zielzellen (Eosinophile und B Zelle)\n→ Anwendung bei Asthma bronchiale, eosinophile Granulomatose mit Polyangiitis',
+  'Dupilumab':
+      'Anti IL4/IL13\n→ hemmt das Andocken von IL4/IL13 an Zielzelle\n→ Anwendung bei Asthma bronchiale, atopische Dermatitis'
+};
+
+Map<String, String> anxiolytikaHypnoticaWirkstoffe = {
+  'Flumazenil?':
+      'GABA A Antagonist \n→ Wirkungen: \nAntagonisieren der Benzodiazepin Wirkung \nÜbelkeit, Erbrechen, Angstzustände, Herzfrequenzanstieg \nkann konvulsiv wirken \n→ muss i.v. gegeben werden, hat nur eine kurze Wirkdauer, deswegen oft Nachinjektion nötig',
+  'Zolpidem/Zopiclon?':
+      'GABA A Agonist \n→ Wirkung: \nsedativ, hypnotisch \n→ Anwendung für kurzzeitige Schlafstörungen (nicht länger als 6 Wochen wegen Abhängigkeitspotential) \n→ Nebenwirkungen: \nTagessedation, eingeschränkte Aufmerksamkeit, Muskelschwäche, Affektverflachung, Amnesie, Atemdepression (alleine führen sie zu keiner ausgeprägten Atemderpression), Blutdruckabfall, Appetitssteigerung, Lipidoverlust und Zyklusstörungen \n→ wirken an den alpha Untereinheiten des GABA A Rezeptors und lösen im ZNS IPSPs aus und lösen ein sedierenden Effekt aus (über ligandengesteuerten Chloridkanal)',
+  'Midazolam?':
+      'GABA A Agonist \n→ kurz wirksam ohne aktiven Metabolit zur Wirkzeitverlängerung \n→ Anwendung als Hypnotikum und für kurzzeitige Schlafstörungen (nicht länger als 6 Wochen wegen Abhängigkeitspotential) \n→ Wirkung: \nanxiolytisch (alpha 2),sedativ, hypnotisch (alpha 1), amnestisch (alpha 1), antikonvulsiv (alpha 1), WENIG zentral muskelrelaxierend \n→ Nebenwirkungen: \nTagessedation, eingeschränkte Aufmerksamkeit, Muskelschwäche, Affektverflachung, Amnesie, Atemdepression (alleine führen sie zu keiner ausgeprägten Atemderpression), Blutdruckabfall, Appetitssteigerung, Lipidoverlust und Zyklusstörungen \n→ wirken an den alpha Untereinheiten des GABA A Rezeptors und lösen im ZNS IPSPs aus und lösen ein sedierenden Effekt aus (über ligandengesteuerten Chloridkanal)',
+  'Oxazepam/Lorazepam/Alprazolam/Flunitrazepam?':
+      'GABA A Agonist \n→ mittellang wirksam ohne aktiven Metabolit zur Wirkzeitverlängerung \n→ Anwendung bei Angststörungen und Schlafstörungen (meist aber nur akut, da schnell Abhängigkeit entsteht) \n→ Wirkung: \nanxiolytisch (alpha 2),sedativ, hypnotisch (alpha 1), amnestisch (alpha 1), antikonvulsiv (alpha 1), WENIG zentral muskelrelaxierend \n→ Nebenwirkungen: \nTagessedation, eingeschränkte Aufmerksamkeit, Muskelschwäche, Affektverflachung, Amnesie, Atemdepression (alleine führen sie zu keiner ausgeprägten Atemderpression), Blutdruckabfall, Appetitssteigerung, Lipidoverlust und Zyklusstörungen \n→ wirken an den alpha Untereinheiten des GABA A Rezeptors und lösen im ZNS IPSPs aus und lösen ein sedierenden Effekt aus (über ligandengesteuerten Chloridkanal)',
+  'Nitrazepam/Clonazepam?':
+      'GABA A Agonist \n→ lang wirksam ohne aktiven Metabolit zur Wirkzeitverlängerung \n→ Anwendung bei Schlafstörungen als Kurzzeitbehandlung und bei Epilepsie im Kindesalter \n→ Wirkung: \nanxiolytisch (alpha 2),sedativ, hypnotisch (alpha 1), amnestisch (alpha 1), antikonvulsiv (alpha 1), WENIG zentral muskelrelaxierend \n→ Nebenwirkungen: \nTagessedation, eingeschränkte Aufmerksamkeit, Muskelschwäche, Affektverflachung, Amnesie, Atemdepression (alleine führen sie zu keiner ausgeprägten Atemderpression), Blutdruckabfall, Appetitssteigerung, Lipidoverlust und Zyklusstörungen \n→ wirken an den alpha Untereinheiten des GABA A Rezeptors und lösen im ZNS IPSPs aus und lösen ein sedierenden Effekt aus (über ligandengesteuerten Chloridkanal)',
+  'Chlordiazepoxid/Oxazolam?':
+      'GABA A Agonist \n→ Anwendung bei Spannungs-, Erregungs- und Angstzuständen  und zur Therapie von Schlafstörungen \n→ lang wirksam mit aktiven Metabolit zur Wirkzeitverländerung (Abbau von Diazepam verläuft über zwei wirksame Metabolite) \n→ Wirkung: \nanxiolytisch (alpha 2),sedativ, hypnotisch (alpha 1), amnestisch (alpha 1), antikonvulsiv (alpha 1), WENIG zentral muskelrelaxierend \n→ Nebenwirkungen: \nTagessedation, eingeschränkte Aufmerksamkeit, Muskelschwäche, Affektverflachung, Amnesie, Atemdepression (alleine führen sie zu keiner ausgeprägten Atemderpression), Blutdruckabfall, Appetitssteigerung, Lipidoverlust und Zyklusstörungen \n→ wirken an den alpha Untereinheiten des GABA A Rezeptors und lösen im ZNS IPSPs aus und lösen ein sedierenden Effekt aus (über ligandengesteuerten Chloridkanal)',
+  'Diazepam?':
+      'GABA A Agonist \n→ lang wirksam mit aktiven Metabolit zur Wirkzeitverländerung (Abbau von Diazepam verläuft über zwei wirksame Metabolite) \n→ Anwendung bei: \nAngst, Erregung und Spannungszustände \nBasissedation, präoperative Medikation \nMotorische Unruhe und Delirium tremens \nStatus epilepticus und andere Krampfzustände \nEklampsie \nMuskelkrämpfe, spastische Zustände \n→ Wirkung: \nanxiolytisch (alpha 2),sedativ, hypnotisch (alpha 1), amnestisch (alpha 1), antikonvulsiv (alpha 1), WENIG zentral muskelrelaxierend \n→ Nebenwirkungen: \nTagessedation, eingeschränkte Aufmerksamkeit, Muskelschwäche, Affektverflachung, Amnesie, Atemdepression (alleine führen sie zu keiner ausgeprägten Atemderpression), Blutdruckabfall, Appetitssteigerung, Lipidoverlust und Zyklusstörungen \n→ wirken an den alpha Untereinheiten des GABA A Rezeptors und lösen im ZNS IPSPs aus und lösen ein sedierenden Effekt aus (über ligandengesteuerten Chloridkanal)',
+  'Buspiron?':
+      'Agonist am 5HT Rezeptor und am D2 Rezeptor \n→ Anwendung bei generalisierter Angst (jedoch nicht bei Panikstörungen) \n→ Wirkung: \nanxiolytisch, aber nicht sedierend \n→ keine Abhängigkeit beobachtet \n→ schwächer wirksam als Benzodiazepine mit verzögerten Wirkeintritt \n→ orale Einnahme mit kurzer HWZ (2-4h) \n→ Nebenwirkungen: \ngastrointestinale Beschwerden, Kopfschmerzen, Schwindel, Schlaflosigkeit, Gynäkostamie \n→ Kontraindikation mit MAO Hemmern, da sonst hypertensive Krise',
+  'Tasimelteon?':
+      'Melatonin MT1 Rezeptor Agonist \n→ Anwendung bei Nicht-24-Stunden-Schlaf-Wach-Syndroms',
+};
+
+Map<String, String> analgetikaWirkstoffe = {
+  'Prostaglandine?':
+      'Körperhormon \n→ im Magen durch COX-1 führt es zu verringerter Säureproduktion und vermehrten Schleimproduktion \n→ in der Niere durch COX-1 zur vermehrten Durchblutung \n→ fördert durch COX-2 Entzündungen und Na und H2O Ausscheidung',
+  'Thromboxan A2?':
+      'Körperhormon \n→ durch COX-1 in den Leukozyten wird Vasokonstriktion und Thrombozytenaggregation gefördert',
+  'Prostacyclin?':
+      'Körperhormon \n→ durch COX-2 führt es im Endothel zu Vasodilatation und zur Hemmung der Thrombozytenaggregation',
+  'Leukotriene?':
+      'Körperhormon \n→ führen zu einer Entzündung \n→ fördern Entzündungen',
+  'ASS/Ibuprofen/Diclofenac?':
+      'COX-1 + COX-2 Inhibitor \n→ amphiphile schwache Säure, welche bei entzündeten Gewebe protoniert werden und dann lipophiler und in das Gewebe übergehen können \n→ auch NSAR genannt \n→analgetisch (Nozizeptor wird desinsibilisiert), antipyretisch (PGE2 Bildung im Hypothalamus wird beschränkt), antiphlogistisch (PG Bildung im entzündeten Gewebe wird vermindert) \n→ bei erstem Medikament eine irreversible Hemmung der Thrombozyten COX , bei Letztem gibt es PG-Bildung Hemmung im Uterus \n→ wird verwendet bei Fieber, Schmerzen, Entzündungen und Rheuma \n→ kommt zum Reizhusten durch vermehrte Leukotrien Bildung',
+  'Parecoxib?':
+      'Coxibe \n→ selektiver COX-2 Inhibitor \n→ analgetisch, antipyretisch, antiphlogistisch \n→ angewendet bei postoperativer Schmerz \n→ da nur COX-2 ist ein geringeres Ulcusrisiko \n→ ABER: erhöhte Aggregationsneigung der Thrombozyten und ein erhöhtes Risiko für Myokardinfarkt',
+  'Metamizol?':
+      'nicht saure nicht opioide Analgetika \n→ sehr analgetisch, antipyretisch, spasmolytisch, aber nicht antiphlogistisch \n→ Anwendung bei bei Schmerzen, Fieber \n→ kaum NW auf Magen-Darm \n→ Nebenwirkungen Agranulozytose, Thrombozytopenie, Blutdruckabfall, Exanthem',
+  'Paracetamol?':
+      'nicht saure nicht opioide Analgetika \n→ analgetisch, antipyretisch, spasmolytisch \n→ Anwendung bei Schmerzen, Fieber \n→ Nebenwirkungen Nierenschäden bei chronischen Gebrauch und bei Überdosis eine Leberzellnekrose (Antidot ist N-Acetylcystein) \n→ darf nicht Nieren- und Leberschäden gegeben werden \n→ wirkt im ZNS als COX-1 und COX-2 Hemmer und Anandamid Rückaufnahme-Hemmer > Cannabinoid Rez. Aktivierung',
+  'Morphin?':
+      'klassicher Opioid Agonist \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \natemdepressiv \nemetisch \nmiotisch \neuphorisierend \nsuchterzeugend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt, \n→ Anwendung bei starken Schmerzen, Tumorleiden',
+  'Buprenorphin?':
+      'partieller Opioid Agonist \n→ wirkt weniger, aber analgetisch besser \n→ Einsatz in Substitutionstherapie \n→ nur schwer antagonisierbar mit Naloxon \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \natemdepressiv \nemetisch \nmiotisch \neuphorisierend \nsuchterzeugend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
+  'Naloxon?':
+      'Opioid Antagonist \n→ wird als Antidot gegen Opioid Überdosis verwendet \n→ parenterale Gabe (first pass Metabolismus oral…) \n→ angewendet bei Gabe von Opioiden, um im Darm Obstipation zu verhindern \n→ nur geringe HWZ, deswegen bei Antagonisieren aufpassen, dass der Pat nicht wieder in Atemdepression rutscht',
+  'Naltrexon?':
+      'Opioid Antagonist \n→ wird bei Suchtbehandlung verwendet (durch Antagonisieren werden die Opioidrezeptoren nicht stimuliert) \n→ lange HWZ \n→ wird oral verabreicht und besitzt eine gute Bioverfügbarkeit',
+  'Codein?':
+      'Opioid Agonist \n→ wird oral verabreicht \n→ ist indiziert bei mäßig bis starken Schmerzen und Reizhusten \n→ wirkt direkt auf Opioid Rezeptoren, aber wird auch vom Körper zu 10% zu Morphin umgewandelt (da aber nur eine bestimmte Menge an Enzymen vorhanden ist, kommt es bei höherer Dosis nicht zu einer verstärkten Wirkung, da irgendwann immer dieselbe Menge an Morphin freigesetzt wird \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \natemdepressiv \nemetisch \nmiotisch \neuphorisierend \nsuchterzeugend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
+  'Pethidin?':
+      'Opioid Agonist \n→ vollsynthetisches Opioid \n→ wirkt ähnlich stark wie sein klassischer Kollege, jedoch ist seine euphorisierende Wirkung stärker \n→ wird gerne bei postoperativen shivering angewendet \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \natemdepressiv \nemetisch \nMYDRIASIS \neuphorisierend \nsuchterzeugend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
+  'Fentanyl?':
+      'Opioid Agonist \n→synthetisches Opioid \n→ wird vor allem bei Durchbruchschmerzen verwendet, da es sehr potent wirkt (100-120x stärker als das klassische Opioid) \n→ weniger euphorisierend als Morphin und Heroin \n→ kann als Nasenspray, transdermales Pflaster oder als Lutschtablette eingesetzt werden \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \natemdepressiv \nemetisch \nmiotisch \neuphorisierend \nsuchterzeugend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
+  'Remifentanil?':
+      'Opioid Agonist \n→ wird verwendet in der Anästhesie durch seine sehr kurze HWZ \n→ synthetisches Opioid \n→ wirkt bis zu 200x stärker als Morphin \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \natemdepressiv \nemetisch \nmiotisch \neuphorisierend \nsuchterzeugend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
+  'Tramadol?':
+      'Opioid Agonist \n→ synthetisches Opioid \n→ wirkt schwächer als Morphin, hat jedoch keine Atemdepression und wenig Suchtpotential, weswegen es gerne bei mäßig starken Schmerzen verwendet wird \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \nemetisch \nmiotisch \neuphorisierend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
+  'Methadon?':
+      'Opioid Agonist \n→ wird zur Substitutionstherapie bei Heroin Abhängigkeit verwendet \n→ erzeugt keine hohen Spiegel (dadurch ist die Gefahr einer Atemdepression verringert und des süchtig machenden “Kicks”) \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \nemetisch \nmiotisch \neuphorisierend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
+  'Tilidin?':
+      'Opioid Agonist \n→ schwächer wirkendes synthetisches Opioid \n→ wird bei mäßig starken Schmerzen verwendet \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \nemetisch \nmiotisch \neuphorisierend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt'
 };
 
 Map<String, String> vnsWirkmechanismen = {
@@ -228,12 +345,12 @@ Map<String, String> vnsWirkmechanismen = {
   'Parasympathomimetika?':
       'Wirkungen:\nPupillenverengung\nSekretionsförderung: Schweiss-, Speichel-, Tränendrüsen, exokrine Drüsen des Verdauungstrakts, Schleimzellen der Atemwege\n Senkung der Herzfrequenz\n Stimulation der glatten Muskulatur des Darmtrakts\n Tonuserhöhung der Bronchialmuskulatur\n Tonus- und die Motilitätserhöhung des Urogenitaltrakts, der Gallenwege und der Gallenblase\nFörderung der Harnblasenentleerun\n→ Anwendung:\nGlaukom\nMyasthenia gravis\n Paralytischer Ileus (Darmverschluss), Motilitätsstörungen des Gastrointestinaltrakts, Verstopfung\n In der Anästhesie zur Antagonisierung nichtdepolarisierender MuskelrelaxantienDarm- und Blasenatonie, Blasenentleerungsstörungen\n Mundtrockenheit',
   'Parasympatholytika?':
-      '\n→ Wirkungen:\n Pupillenerweiterung\n Sekretionshemmung: Speichel-, Bronchial-, Magen- und Pankreassekretion\n Bronchienerweiterung\n Hemmung der Darmaktivität\n Krampflösung\n Harnretention\n Erhöhung der Herzfrequenz\n Zentrale Wirkungen\n→ Anwendung:\n hyperaktive Blase\n Krämpfe der glatten Muskulatur, Hypersekretion und Hypermotilität im Gastrointestinaltrakt und Urogenitaltrakt\n Asthma, COPD\n Bradykardie\n Reisekrankheit',
+      'Wirkungen:\n Pupillenerweiterung\n Sekretionshemmung: Speichel-, Bronchial-, Magen- und Pankreassekretion\n Bronchienerweiterung\n Hemmung der Darmaktivität\n Krampflösung\n Harnretention\n Erhöhung der Herzfrequenz\n Zentrale Wirkungen\n→ Anwendung:\n hyperaktive Blase\n Krämpfe der glatten Muskulatur, Hypersekretion und Hypermotilität im Gastrointestinaltrakt und Urogenitaltrakt\n Asthma, COPD\n Bradykardie\n Reisekrankheit',
   'Muskelrelaxantien?':
-      '\n→ Anwendungen:\n Schmerzhafte Muskelspasmen der Skelettmuskulatur\n Rückenschmerzen, Hexenschuss\n Spastizität, z.B. aufgrund einer multipler Sklerose Rückenmarksverletzungen und Gehirnverletzungen\n In der Chirurgie und Intensivpflege, z.B. bei Intubationen, für Beatmungen und operative Eingriffe',
+      'Anwendungen:\n Schmerzhafte Muskelspasmen der Skelettmuskulatur\n Rückenschmerzen, Hexenschuss\n Spastizität, z.B. aufgrund einer multipler Sklerose Rückenmarksverletzungen und Gehirnverletzungen\n In der Chirurgie und Intensivpflege, z.B. bei Intubationen, für Beatmungen und operative Eingriffe',
   'Sympathomimetika?':
-      '\n→ Wirkungen:\n Pupillenerweiterung\n Erhöhte Herzfrequenz, Kontraktilität und Überleitungsgeschwindigkeit am Herzen\n Gefässverengung\n Abnahme der Motilität und des Tonus im Verdauungstrakt\n Bronchienerweiterung\n Reninsekretion\n Zentrale Stimulation\n→ Anwendung:\nAufmerksamkeitsdefizit- / Hyperaktivitätsstörung\n allergischen Reaktionen\n Asthma, COPD\n Bindehautentzündung\n Hypotonie',
-  'Sympatholytika?': '\n→ Anwendung\nProstatavergrößerung\nBluthochdruck',
+      'Wirkungen:\n Pupillenerweiterung\n Erhöhte Herzfrequenz, Kontraktilität und Überleitungsgeschwindigkeit am Herzen\n Gefässverengung\n Abnahme der Motilität und des Tonus im Verdauungstrakt\n Bronchienerweiterung\n Reninsekretion\n Zentrale Stimulation\n→ Anwendung:\nAufmerksamkeitsdefizit- / Hyperaktivitätsstörung\n allergischen Reaktionen\n Asthma, COPD\n Bindehautentzündung\n Hypotonie',
+  'Sympatholytika?': 'Anwendung\nProstatavergrößerung\nBluthochdruck',
 };
 
 Map<String, String> blutgefaesseWirkmechanismen = {
@@ -276,79 +393,4 @@ Map<String, String> diuretikaWirkmechanismen = {
       'reversible Hemmung des Aldosteron-abhängigen ENaCs\n→ Anwendung bei Hypokaliämie (Entstehung bei Schleifendiuretika und Thiaziden), arterieller Hypertonie, Herzinsuffizienz\n→ damit keine Resorbtion von Na im spätdistalen Tubulus und Sammelrohr\n→ durch den Ausfall des Na Rücktransport können weniger K vom Interstitium in die Zelle gepumpt werden, wodurch eine K Retention stattfindet\n→ low ceiling Diuretikum\n→ Kontraindikation bei Niereninsuffizienz, Hyperkaliämie, Hyponaträmie, Folsäuremangel',
   'Aldosteron-Rezeptor-Antagonisten?':
       'kompetitiver Antagonist am Aldosteronrezeptor\n→ Anwendung bei Ödemen, Herzinsuffizienz, Aszites durch Leberzirrhose, primärer Hyperaldosteronismus\n→ verhindert Synthese von Na Kanälen, Na/K Pumpen\n→ Na/Cl Ausscheidung\n→ Kontraindikation bei Niereninsuffizienz'
-};
-
-Map<String, String> diuretikaWirkstoffe = {
-  'Acetazolamid?':
-      'Carboanhydrasehemmer\n→ durch Hemmung der Carboanhydrase kommt es zum Bikarbonat/Na und K Verlust\n→ Anwendung bei Glaukom, Höhenkrankheit\n→ wirkt im proximalen Tubulus\n→ keine Anwendung bei Leber-Niereninsuffizienz',
-  'Furasomid/Torasomid?':
-      'Schleifendiuretikum\n→ Hemmung des Na/K/2Cl Kotransports im dünnen aufsteigenden Ast der Henle Schleife, wodurch es zur Na/K/Ca/Mg Ausscheidung kommt\n→ Anwendung bei Herzinsuffizienz, arterieller Hypertonie, Ödembehandlung, Niereninsuffzienz, Hyperkaliämie/ Hyperkalziämie\n→ ist ein high ceiling Diuretikum mit Rebound Effekt\n→ keine Anwendung bei Hypovolämie, Nierenversagen mit Anurie, Nierensteinen und Leberinsuffizienz',
-  'Hydrochlorothiazid?':
-      'reversible Hemmung der Na/Cl Kotransports im frühdistalen Tubulus\n→ Anwendung bei arterieller Hypertonie, Herzinsuffizienz, renale und hepatogene Ödeme und Hyperkalziurie\n→ Na/K/Mg/Cl Ausscheidung mit Ca Resorption\n→ low ceiling Diuretikum\n→ keine Anwendung bei Nierenversagen, Schwangerschaft und Gicht',
-  'Amilorid/Triamteren?':
-      'reversible Blockade des Aldosteron abhängigen ENaCs im spätdistalen Tubbulus und Sammelrohr\n→ Na Ausscheidung mit K Retention\n→ Anwendung bei Hypokaliämie, Hypomagnesiämie, arterielle Hypertonie und Herzinsuffizienz (in Kombination mit Thiazid (Hypertonie) oder Schleifendiuretikum (Herz)\n→ keine Gabe bei Niereninsuffizienz, Hyperkaliämie, Hyponatriämie',
-  'Spironolacton/Kaliumcanrenoat/Eplerenon?':
-      'Aldosteron-Rezeptor-Antagonist\n→ Anwendung bei Ödemen, Herzinsuffizienz, Aszites\n→ antagonisiert den Aldosteronrezeptor am spätdistalen Tubulus und am Sammelrohr\n→ induziert eine Na Cl Ausscheidung\n→ nicht angewendet bei Niereninsuffizienz'
-};
-
-Map<String, String> asthmaWirkstoffe = {
-  'Salbutamol/Fenoterol/Terbutalin?':
-      'beta 2 Adrenozeptor Agonisten von SABA Gruppe\n→ wirken 4-6h\n→ Anwendung bei Asthma bronchiale\n→ relativ lipophob\n→ nach Bedarf\n→ weiten Bronchen durch beta 2 Agonisierung',
-  'Formoterol/Salmeterol?':
-      'beta 2 Adrenozeptor Agonist von LABA Gruppe\n→ wirken bis zu 12h\n→ Anwendung bei Asthma bronchiale\n→ verweilt in der Membran und wirkt dort lange\n→ weiten Bronchen durch beta 2 Agonisierung',
-  'Ipratropiumbromid?':
-      'Muskarin Antagonist von SAMA Gruppe\n→ wirken bis 6h\n→ Anwendung bei Asthma bronchialz\n→ können zu UAW wie Kopfschmerzen, Mundtrockenheit, GI Störungen und Infektionen der oberen Atemwege führen',
-  'Aclidiniumbromid/Glycopyrroniumbromid/Tiotropiumbromid?':
-      'Muskarin Antagonist von LAMA Gruppe\n→ wirken bis 12-24h\n→können zu UAW wie Kopfschmerzen, Mundtrockenheit, GI Störungen und Infektionen der oberen Atemwege führen\n→ Anwendung bei Asthma bronchiale',
-  'Montelukast/Zafirlukast':
-      'Leukotrienrezeptor Antagonist\n→ verhindern Bronchiokonstriktion/Gefäßdurchlässigkeit/Schleimsekretion\n→ Anwendung bei Asthma bronchiale\n→ antagonisieren am CysLT1 Rezeptor',
-  'Budenosid/Beclometasondipropionat?':
-      'Inhalative Glucocorticoide\n→ hemmen Zytokinsynthese\n→ Erhöhung der beta Rezeptoren\n→ hoher first pass Effekt, dadurch kaum Nebenwirkungen\n→ Anwendung bei Asthma bronchiale, COPD, Rhinitis, chronisch entzündliche Darmerkrankungen, Rhinitis',
-  'Omalizumab?':
-      'Anti IgE\n→ blockiert das IgE am Binden auf Mastzellen und Basophilen\n→ reduziert Aktivität und Expression von IgE Rezeptoren\n→ Anwendung bei Asthma bronchiale, Uticaria',
-  'Mepolizumab/Reslizumab/Benralizumab?':
-      'Anti IL5\n→ verhindert Bindung von IL5 auf Zielzellen (Eosinophile und B Zelle)\n→ Anwendung bei Asthma bronchiale, eosinophile Granulomatose mit Polyangiitis',
-  'Dupilumab':
-      'Anti IL4/IL13\n→ hemmt das Andocken von IL4/IL13 an Zielzelle\n→ Anwendung bei Asthma bronchiale, atopische Dermatitis'
-};
-
-Map<String, String> analgetikaWirkstoffe = {
-  'Prostaglandine?':
-      'Körperhormon \n→ im Magen durch COX-1 führt es zu verringerter Säureproduktion und vermehrten Schleimproduktion \n→ in der Niere durch COX-1 zur vermehrten Durchblutung \n→ fördert durch COX-2 Entzündungen und Na und H2O Ausscheidung',
-  'Thromboxan A2?':
-      'Körperhormon \n→ durch COX-1 in den Leukozyten wird Vasokonstriktion und Thrombozytenaggregation gefördert',
-  'Prostacyclin?':
-      'Körperhormon \n→ durch COX-2 führt es im Endothel zu Vasodilatation und zur Hemmung der Thrombozytenaggregation',
-  'Leukotriene?':
-      'Körperhormon \n→ führen zu einer Entzündung \n→ fördern Entzündungen',
-  'ASS/Ibuprofen/Diclofenac?':
-      'COX-1 + COX-2 Inhibitor \n→ amphiphile schwache Säure, welche bei entzündeten Gewebe protoniert werden und dann lipophiler und ins Gewebe übergehen können \n→ auch NSAR genannt \n→analgetisch (Nozizeptor wird desinsibilisiert), antipyretisch (PGE2 Bildung im Hypothalamus wird beschränkt), antiphlogistisch (PG Bildung im entzündeten Gewebe wird vermindert) \n→ bei erstem Medikament eine irreversible Hemmung der Thrombozyten COX , bei Letztem gibt es PG-Bildung Hemmung im Uterus \n→ wird verwendet bei Fieber, Schmerzen, Entzündungen und Rheuma \n→ kommt zum Reizhusten durch vermehrte Leukotrien Bildung',
-  'Parecoxib?':
-      'Coxibe \n→ selektiver COX-2 Inhibitor \n→ analgetisch, antipyretisch, antiphlogistisch \n→ angewendet bei postoperativer Schmerz \n→ da nur COX-2 ist ein geringeres Ulcusrisiko \n→ ABER: erhöhte Aggregationsneigung der Thrombozyten und ein erhöhtes Risiko für Myokardinfarkt',
-  'Metamizol?':
-      'nicht saure nicht opioide Analgetika \n→ sehr analgetisch, antipyretisch, spasmolytisch, aber nicht antiphlogistisch \n→ Anwendung bei bei Schmerzen, Fieber \n→ kaum NW auf Magen-Darm \n→ Nebenwirkungen Agranulozytose, Thrombozytopenie, Blutdruckabfall, Exanthem',
-  'Paracetamol?':
-      'nicht saure nicht opioide Analgetika \n→ analgetisch, antipyretisch, spasmolytisch \n→ Anwendung bei Schmerzen, Fieber \n→ Nebenwirkungen Nierenschäden bei chronischen Gebrauch und bei Überdosis eine Leberzellnekrose (Antidot ist N-Acetylcystein) \n→ darf nicht Nieren- und Leberschäden gegeben werden \n→ wirkt im ZNS als COX-1 und COX-2 Hemmer und Anandamid Rückaufnahme-Hemmer > Cannabinoid Rez. Aktivierung',
-  'Morphin?':
-      'klassicher Opioid Agonist \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \natemdepressiv \nemetisch \nmiotisch \neuphorisierend \nsuchterzeugend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt, \n→ Anwendung bei starken Schmerzen, Tumorleiden',
-  'Buprenorphin?':
-      'partieller Opioid Agonist \n→ wirkt weniger, aber analgetisch besser \n→ Einsatz in Substitutionstherapie \n→ nur schwer antagonisierbar mit Naloxon \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \natemdepressiv \nemetisch \nmiotisch \neuphorisierend \nsuchterzeugend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
-  'Naloxon?':
-      'Opioid Antagonist \n→ wird als Antidot gegen Opioid Überdosis verwendet \n→ parenterale Gabe (first pass Metabolismus oral…) \n→ angewendet bei Gabe von Opioiden, um im Darm Obstipation zu verhindern \n→ nur geringe HWZ, deswegen bei Antagonisieren aufpassen, dass der Pat nicht wieder in Atemdepression rutscht',
-  'Naltrexon?':
-      'Opioid Antagonist \n→ wird bei Suchtbehandlung verwendet (durch Antagonisieren werden die Opioidrezeptoren nicht stimuliert) \n→ lange HWZ \n→ wird oral verabreicht und besitzt eine gute Bioverfügbarkeit',
-  'Codein?':
-      'Opioid Agonist \n→ wird oral verabreicht \n→ ist indiziert bei mäßig bis starken Schmerzen und Reizhusten \n→ wirkt direkt auf Opioid Rezeptoren, aber wird auch vom Körper zu 10% zu Morphin umgewandelt (da aber nur eine bestimmte Menge an Enzymen vorhanden ist, kommt es bei höherer Dosis nicht zu einer verstärkten Wirkung, da irgendwann immer dieselbe Menge an Morphin freigesetzt wird \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \natemdepressiv \nemetisch \nmiotisch \neuphorisierend \nsuchterzeugend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
-  'Pethidin?':
-      'Opioid Agonist \n→ vollsynthetisches Opioid \n→ wirkt ähnlich stark wie sein klassischer Kollege, jedoch ist seine euphorisierende Wirkung stärker \n→ wird gerne bei postoperativen shivering angewendet \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \natemdepressiv \nemetisch \nMYDRIASIS \neuphorisierend \nsuchterzeugend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
-  'Fentanyl?':
-      'Opioid Agonist \n→synthetisches Opioid \n→ wird vor allem bei Durchbruchschmerzen verwendet, da es sehr potent wirkt (100-120x stärker als das klassische Opioid \n→ weniger euphorisierend als Morphin und Heroin \n→ kann als Nasenspray, transdermales Pflaster oder als Lutschtablette eingesetzt werden \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \natemdepressiv \nemetisch \nmiotisch \neuphorisierend \nsuchterzeugend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
-  'Remifentanil?':
-      'Opioid Agonist \n→ wird verwendet in der Anästhesie durch seine sehr kurze HWZ \n→ synthetisches Opioid \n→ wirkt bis zu 200x stärker als Morphin \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \natemdepressiv \nemetisch \nmiotisch \neuphorisierend \nsuchterzeugend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
-  'Tramadol?':
-      'Opioid Agonist \n→ synthetisches Opioid \n→ wirkt schwächer als Morphin, hat jedoch keine Atemdepression und wenig Suchtpotential, weswegen es gerne bei mäßig starken Schmerzen verwendet wird \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \nemetisch \nmiotisch \neuphorisierend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
-  'Methadon?':
-      'Opioid Agonist \n→ wird zur Substitutionstherapie bei Heroin verwendet \n→ erzeugt keine hohen Spiegel (dadurch ist die Gefahr einer Atemdepression verringert und des süchtig machenden “Kicks” \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \nemetisch \nmiotisch \neuphorisierend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt',
-  'Tilidin?':
-      'Opioid Agonist \n→ schwächer wirkendes synthetisches Opioid \n→ wird bei mäßig starken Schmerzen verwendet \n→ analgetisch, sedativ, antitussiv \n→ Zentral: \nemetisch \nmiotisch \neuphorisierend \n→ Peripher: \nBlutdruck, Herzfrequenz, Magenentleerung hemmend \nerhöhter Tonus in GI, HW mit Obstipation und Harnverhalt'
 };

@@ -2,17 +2,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 List<dynamic> selectedChapter = [];
 
-Future<void> addCheckToListToPreferences() async {
+Future<void> addCheckToListToPreferences(bool startedSession) async {
   final prefs = await SharedPreferences.getInstance();
-  for (var chapter in selectedChapter) {
-    if (prefs.getStringList('checks$chapter') == null) {
-      List<String> checks = ['✅'];
-      prefs.setStringList('checks$chapter', checks);
-    } else {
-      List<String>? checks = prefs.getStringList('checks$chapter');
-      checks!.add('✅');
-      prefs.setStringList('checks$chapter', checks);
+
+  if (startedSession == true) {
+    for (var chapter in selectedChapter) {
+      if (prefs.getStringList('checks$chapter') == ['']) {
+        List<String> checks = ['✅'];
+        prefs.setStringList('checks$chapter', checks);
+      } else {
+        List<String>? checks = prefs.getStringList('checks$chapter');
+        checks!.add('✅');
+        prefs.setStringList('checks$chapter', checks);
+      }
     }
+    startedSession = false;
   }
 }
 
@@ -30,7 +34,7 @@ Future<String> getCheckString(String chapter) async {
     String buffer2 = buffer1.replaceAll("]", "");
 
     if (buffer2.length / 2 > 3) {
-      // divide by two because one emoji has so characters
+      // divide by two because one emoji has two characters
       buffer2 = '✅ (${buffer2.length ~/ 2}x)';
     }
 

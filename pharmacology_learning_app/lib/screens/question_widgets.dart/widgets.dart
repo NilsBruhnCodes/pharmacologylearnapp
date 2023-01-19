@@ -4,7 +4,7 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:pharmacology_learning_app/screens/question_widgets.dart/detail_solution_screen.dart';
 import 'package:pharmacology_learning_app/screens/question_widgets.dart/question_screen.dart';
 
-import '../../models/clicked_right_first_time.dart';
+import '../../models/bools.dart';
 
 class ElectionButton extends StatefulWidget {
   const ElectionButton({
@@ -14,6 +14,7 @@ class ElectionButton extends StatefulWidget {
     required this.keyStrings,
     required this.questionNumber,
     required this.listLocation,
+    required this.startedSession,
     Key? key,
   }) : super(key: key);
 
@@ -22,6 +23,7 @@ class ElectionButton extends StatefulWidget {
   final List keyStrings;
   final int questionNumber;
   final int listLocation;
+  final bool startedSession;
 
   final Map<String, String> selectedQuestionFromChapter;
 
@@ -46,6 +48,7 @@ class _ElectionButtonState extends State<ElectionButton> {
             context,
             CupertinoPageRoute(
               builder: (context) => QuestionScreen(
+                startedSession: widget.startedSession,
                 selectedQuestionFromChapter: widget.selectedQuestionFromChapter,
               ),
             ),

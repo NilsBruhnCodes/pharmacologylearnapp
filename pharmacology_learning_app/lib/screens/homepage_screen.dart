@@ -22,7 +22,7 @@ class HomepageScreen extends StatelessWidget {
               'die Pharma Lern-App',
               style: TextStyle(fontSize: 25),
             )),
-            const SizedBox(height: 85),
+            const SizedBox(height: 35),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height - 330,
@@ -46,13 +46,21 @@ class HomepageScreen extends StatelessWidget {
                         ),
                         color: Color.fromARGB(215, 244, 67, 54),
                       ),
-                      margin: const EdgeInsets.all(20),
+                      margin: const EdgeInsets.all(10),
                       child: const Center(
                           child: Text(
                         '🧪',
                         style: TextStyle(fontSize: 82),
                       )),
                     ),
+                  ),
+                  const SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
+                  ),
+                  const SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
                   ),
                   GestureDetector(
                     onTap: () {
@@ -70,7 +78,7 @@ class HomepageScreen extends StatelessWidget {
                         ),
                         color: Color.fromARGB(210, 255, 235, 59),
                       ),
-                      margin: const EdgeInsets.all(20),
+                      margin: const EdgeInsets.all(10),
                       child: const Center(
                         child: Text(
                           '⚙️',

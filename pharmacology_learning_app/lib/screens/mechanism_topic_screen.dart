@@ -11,6 +11,7 @@ import 'package:pharmacology_learning_app/screens/solutions_screen.dart';
 class MechanismTopicScreen extends StatefulWidget {
   MechanismTopicScreen({super.key});
   final List<int> _selectedItems = [];
+  bool startedSession = true;
 
   @override
   State<MechanismTopicScreen> createState() => _MechanismTopicScreenState();
@@ -103,7 +104,6 @@ class _MechanismTopicScreenState extends State<MechanismTopicScreen> {
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return Text(snapshot.data!);
-                                    //TODO: snapshot.data! add that
                                   } else {
                                     return const Text('');
                                   }
@@ -126,6 +126,7 @@ class _MechanismTopicScreenState extends State<MechanismTopicScreen> {
                     context,
                     CupertinoPageRoute(
                       builder: (context) => QuestionScreen(
+                        startedSession: widget.startedSession,
                         selectedQuestionFromChapter:
                             createSelectedQuestionFromChapter(
                                 widget._selectedItems, Topics.mechanisms),

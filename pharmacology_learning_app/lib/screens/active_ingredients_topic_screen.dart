@@ -11,6 +11,7 @@ import 'package:pharmacology_learning_app/screens/solutions_screen.dart';
 class ActiveIngredientsTopicScreen extends StatefulWidget {
   ActiveIngredientsTopicScreen({super.key});
   final List<int> _selectedItems = [];
+  bool startedSession = true;
 
   @override
   State<ActiveIngredientsTopicScreen> createState() =>
@@ -107,7 +108,6 @@ class _ActiveIngredientsTopicScreenState
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     return Text(snapshot.data!);
-                                    //TODO: snapshot.data! add that
                                   } else {
                                     return const Text('');
                                   }
@@ -130,6 +130,7 @@ class _ActiveIngredientsTopicScreenState
                     context,
                     CupertinoPageRoute(
                       builder: (context) => QuestionScreen(
+                        startedSession: widget.startedSession,
                         selectedQuestionFromChapter:
                             createSelectedQuestionFromChapter(
                                 widget._selectedItems, Topics.activeIngredient),
